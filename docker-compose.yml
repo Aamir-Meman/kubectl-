@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+   db:
+    build:
+     context: .
+     dockerfile: mysql_dockerfile
+    image: mysql:bitnami
+
+   tomcat:
+     build:
+         context: .
+         dockerfile: tomcat_dockerfile
+     depends_on:
+       - db
+     image: tomcat:bitnami      
+     ports:
+       - "8888:8080"
+     links:
+       - db:mysql
