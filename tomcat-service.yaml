@@ -7,7 +7,9 @@ metadata:
 spec:
   ports:
     - port: 8080
+      nodePort: 30001
+      protocol: TCP
   selector:
     app: tomcat
     tier: war
-  type: LoadBalancer
+  type: NodePort

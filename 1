@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata: 
+   name: tomcat
+   labels:
+     app: tomcat
+spec: 
+  replicas: 4
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+       maxUnavailable: 1
+       maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: tomcat
+        tier: war
+    spec:
+      containers:
+      - image: aamir22921/tomcat_mac
+        name:  tomcat
+        env:
+        - name: TOMCAT_DB_HOST
+          value: tomcat-mysql 
+        ports:
+        - containerPort: 8080
+          name: tomcat   
