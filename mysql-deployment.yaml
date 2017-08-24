@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       labels:
-        app: mysql
+        app: mysql # must match the selector in the service
     spec:
       containers:
       - image: aamir2292/mysql_mac
