@@ -8,5 +8,5 @@ spec:
   ports:
     - port: 3306
   selector:
-    app: mysql
+    app: mysql # must match the label of the pod, otherwise it will not be exposed
   type: ClusterIP
